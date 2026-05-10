@@ -19,6 +19,21 @@ Issues are often attributed to the WAF but originate elsewhere or result from cr
 - Templates: Reusable checklists and workflows
 - Examples: Sample logs and data for learning
 
+## Project Status
+
+This repository is actively being developed.
+
+Current focus:
+- Intake and evidence collection
+- DNS and request-path validation
+- WAF visibility verification
+
+Future topics:
+- IIS and FREB correlation
+- Load balancer troubleshooting
+- Flask application troubleshooting
+- Header forwarding and TLS issues
+
 ## Core principle
 
 **Trace the request across every layer.**
