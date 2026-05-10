@@ -1,0 +1,55 @@
+# Dockerfile for Alpine Linux with common tools
+
+# build the docker image
+# docker build -t toolbox -f dockerfile.alpine .
+#
+# start a new container from the image
+# docker run -dit --name toolbox toolbox
+#
+# start an existing container
+# docker start toolbox
+#
+# stop a running container
+# docker stop toolbox
+#
+# start bash in a running container
+# docker exec -it toolbox /bin/bash
+
+
+FROM alpine:latest
+
+# # If you have a corporate proxy certificate copy it in and trust it
+# # add the corporate proxy certificate to the image
+# COPY ./proxy.pem /usr/local/share/ca-certificates/proxy.crt
+# # append the corporate proxy certificate to the certificate authorities
+# RUN cat /usr/local/share/ca-certificates/proxy.crt >> /etc/ssl/certs/ca-certificates.crt
+
+RUN apk update && \
+    apk add --no-cache \
+    bash \
+    curl \
+    openssl \
+    sslscan \
+    sudo \
+    unzip && \
+    rm -rf /var/cache/apk/*
+
+# add a normal user
+ENV HOME=/home/tooluser
+
+RUN addgroup tooluser && \
+  adduser -D --ingroup tooluser tooluser
+
+# set password
+RUN echo "tooluser:changeme" | chpasswd
+
+# add them to sudo
+RUN echo "tooluser ALL=(ALL) ALL" > /etc/sudoers.d/tooluser && \
+  chmod 0440 /etc/sudoers.d/tooluser
+
+# switch to the new user
+USER tooluser
+WORKDIR $HOME
+
+# start bash
+ENTRYPOINT ["/bin/bash"]
