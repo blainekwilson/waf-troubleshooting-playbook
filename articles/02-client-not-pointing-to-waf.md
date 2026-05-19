@@ -151,7 +151,7 @@ At a high level:
 - Ensure no hardcoded IPs are being used
 - Validate the client is not connecting directly to the origin
 
-→ See: [Step 01: Playbook](../playbooks/01-verify-client-points-to-waf.md)
+→ See: [Step 01: Playbook](../playbooks/02-verify-client-points-to-waf.md)
 
 ---
 

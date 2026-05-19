@@ -1,4 +1,4 @@
-# Step 00: Intake and Evidence Review
+# Step 01: Intake and Evidence Review
 
 Before troubleshooting any reported WAF issue, review the information already collected and validate the quality of that information.
 
@@ -83,4 +83,4 @@ A structured intake process helps junior analysts:
 
 After intake is complete, proceed to:
 
-[Step 01: Verify the client is pointing to the WAF](01-verify-client-points-to-waf.md)
+[Step 02: Verify the client is pointing to the WAF](02-verify-client-points-to-waf.md)

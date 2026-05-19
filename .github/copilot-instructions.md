@@ -27,13 +27,13 @@ Always:
 
 ## Step numbering
 
-- Step 00 = Intake and Evidence Review
-- Step 01 = Verify the client is pointing to the WAF
-- Step 02 = Verify the request reaches the WAF
-- Step 03 = Confirm WAF handling
-- Step 04 = Validate forwarding to origin
-- Step 05 = Check origin logs
-- Step 06 = Compare response codes across layers
+- Step 01 = Intake and Evidence Review
+- Step 02 = Verify the client is pointing to the WAF
+- Step 03 = Verify the request reaches the WAF
+- Step 04 = Confirm WAF handling
+- Step 05 = Check infrastructure logs
+- Step 06 = Check API/application logs
+- Step 07 = Compare response codes across layers
 
 ## Style guidance
 
