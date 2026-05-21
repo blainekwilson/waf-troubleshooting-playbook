@@ -4,6 +4,30 @@ Poor prompting often causes AI systems to reinforce unsupported assumptions.
 
 This document provides examples of weak prompts and evidence-driven alternatives.
 
+The goal is not to discourage AI use.
+
+The goal is to improve troubleshooting quality by ensuring AI evaluates evidence rather than assumptions.
+
+---
+
+# Core Principle
+
+> AI should help analyze evidence — not replace it.
+
+Weak prompts often:
+
+- assume ownership
+- skip request-path validation
+- encourage speculation
+- treat technical possibility as proof
+
+Stronger prompts:
+
+- provide evidence
+- identify known facts
+- distinguish assumptions from findings
+- request structured analysis
+
 ---
 
 # Weak Prompt Example
@@ -16,31 +40,29 @@ Problems:
 
 - assumes WAF involvement
 - provides no evidence
-- skips request flow validation
+- skips traversal validation
 - encourages speculative answers
 
 ---
 
-# Improved Prompt Example
-
 ## Better Prompt
 
-> “The application returns a 403 for internal users only.
+> “Users receive HTTP 403.
 >
-> External users succeed.
+> Evidence currently available:
 >
-> Internal DNS resolves the hostname to an internal IP.
+> - HAR file attached
+> - raw HTTP response attached
+> - no matching WAF logs found
+> - origin infrastructure logs available
 >
-> No matching WAF logs exist for the failed requests.
->
-> Determine whether evidence suggests the WAF handled the request.”
+> Determine whether evidence confirms the request traversed the WAF before evaluating ownership.”
 
 Benefits:
 
-- provides evidence
-- identifies request scope
-- references authoritative sources
-- avoids assumption-driven troubleshooting
+- requests evidence evaluation
+- validates request path first
+- avoids premature ownership assignment
 
 ---
 
@@ -55,11 +77,9 @@ Problems:
 - assumes root cause
 - lacks timestamps
 - lacks evidence
-- lacks request flow validation
+- skips troubleshooting methodology
 
 ---
-
-# Improved Prompt Example
 
 ## Better Prompt
 
@@ -68,31 +88,194 @@ Problems:
 > Evidence collected:
 >
 > - HAR file attached
-> - DNS resolution attached
-> - No WAF logs for the request timestamp
-> - Application logs show direct-to-origin requests from internal systems
+> - raw HTTP response attached
+> - timestamps available
+> - no matching WAF logs for the request
+> - application logs show direct-to-origin requests
 >
-> Determine which layer most likely generated the response.”
+> Determine which layer most likely generated the response and explain the supporting evidence.”
+
+Benefits:
+
+- provides evidence
+- identifies known facts
+- asks for ownership evaluation rather than confirmation bias
+
+---
+
+# WAF Traversal Validation Prompt
+
+Before evaluating WAF ownership, validate whether the request traversed the WAF.
+
+## Better Prompt
+
+> “Users report an HTTP error.
+>
+> Evidence collected:
+>
+> - HAR file attached
+> - raw HTTP response attached
+> - timestamps available
+>
+> Determine whether evidence confirms the request traversed the WAF before evaluating root cause.”
+
+Benefits:
+
+- prioritizes traversal validation
+- leverages direct request evidence
+- avoids DNS-first assumptions
+
+---
+
+# Status Code Investigation Prompt
+
+AI should distinguish between:
+
+- possible
+- likely
+- proven
+- disproven
+
+This is particularly important for status code investigations.
+
+## Weak Prompt
+
+> “Can the WAF cause HTTP 426 errors?”
+
+Problems:
+
+- encourages possibility-based reasoning
+- invites confirmation bias
+- provides no evidence
+
+A technically correct answer may still be operationally misleading.
+
+---
+
+## Better Prompt
+
+> “We are seeing HTTP 426 responses.
+>
+> List the common non-WAF causes first.
+>
+> Then evaluate whether the WAF is involved using:
+>
+> - evidence supporting WAF involvement
+> - evidence against WAF involvement
+> - falsification tests
+> - confidence level
+> - next evidence to collect.”
+
+Benefits:
+
+- anchors troubleshooting in typical causes
+- avoids WAF-first bias
+- encourages structured uncertainty
+
+---
+
+# Second-Hand Information Prompt
+
+AI should not treat summaries or opinions as authoritative evidence.
+
+## Weak Prompt
+
+> “The application team says the WAF is blocking traffic. What WAF rule should we change?”
+
+Problems:
+
+- accepts second-hand information
+- assumes ownership
+- bypasses evidence validation
+
+---
+
+## Better Prompt
+
+> “The application team suspects the WAF is blocking traffic.
+>
+> Evidence currently available:
+>
+> - screenshots
+> - timestamps
+> - HAR file pending
+> - no WAF event IDs collected
+>
+> Identify what evidence is needed before evaluating WAF ownership.”
+
+Benefits:
+
+- treats summaries as unverified
+- requests missing evidence
+- reinforces methodology
+
+---
+
+# AI-Assisted Evidence Collection
+
+AI can be particularly useful when evidence is incomplete.
+
+Rather than asking AI to determine root cause immediately, ask:
+
+## Better Prompt
+
+> “Here is the currently available troubleshooting evidence.
+>
+> Identify:
+>
+> - known facts
+> - assumptions
+> - missing evidence
+> - competing explanations
+> - next validation steps.”
+
+Benefits:
+
+- organizes investigations
+- highlights evidence gaps
+- prevents premature conclusions
 
 ---
 
 # Recommended Troubleshooting Prompt Structure
 
-Provide:
+Strong prompts typically include:
 
 - timestamps
-- source IPs
-- DNS resolution
+- affected URLs
 - HAR files
-- request/response samples
+- raw HTTP requests/responses
+- WAF headers or fingerprints
 - WAF event IDs
+- source IP information
 - proxy details
-- request path information
-- application log evidence
+- application or origin logs
+- reproduction steps
+- known vs unknown information
+
+The more clearly evidence is presented, the more reliable AI-assisted analysis becomes.
+
+---
+
+# Recommended Response Format
+
+When evaluating WAF involvement or troubleshooting ownership, use the structured response format defined in:
+
+→ [Troubleshooting Skill / Required Response Structure](troubleshooting-skill.md)
+
+This format encourages:
+
+- evidence-driven analysis
+- explicit uncertainty
+- falsification testing
+- confidence scoring
+- structured evaluation of ownership
 
 ---
 
 # Related Content
 
+- [Troubleshooting Skill](troubleshooting-skill.md)
 - [Authoritative Sources](authoritative-sources.md)
+- [Evidence Requirements](evidence-requirements.md)
 - [Anti-Assumption Rules](anti-assumption-rules.md)

@@ -12,6 +12,31 @@ These rules are intended to reduce assumption amplification during troubleshooti
 
 ---
 
+## Rule: Possible Is Not Probable
+
+If a user asks whether the WAF could cause a symptom, first identify common non-WAF causes.
+
+Example:
+
+For HTTP 426, consider likely causes such as:
+
+- protocol upgrade requirements
+- HTTP version negotiation
+- TLS/proxy behavior
+- origin server configuration
+- application or framework behavior
+
+Only then evaluate where the WAF could fit.
+
+The AI should distinguish between:
+
+- possible
+- likely
+- proven
+- disproven
+
+---
+
 # Rules
 
 ## 1. Do Not Assume the WAF Handled the Request
