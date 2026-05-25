@@ -63,6 +63,6 @@ The goal is to ensure AI assists troubleshooting methodology rather than replaci
 
 - [Troubleshooting Methodology](playbooks/00-troubleshooting-methodology.md)
 
-- [Step 00: Intake and Evidence Review](playbooks/00-intake-and-evidence.md)
+- [Step 01: Intake and Evidence Review](playbooks/01-intake-and-evidence.md)
 
-- [Step 01: Verify the client is pointing to the WAF](playbooks/01-verify-client-points-to-waf.md)
+- [Step 02: Verify the client is pointing to the WAF](playbooks/02-verify-client-points-to-waf.md)
