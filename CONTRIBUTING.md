@@ -178,7 +178,7 @@ Diagrams are stored in the `diagrams/` folder as PNG files. If you are contribut
 
 - Use clear, high-contrast styling legible at standard screen resolution.
 - Include the source file (e.g., `.drawio`, `.excalidraw`) if possible so others can update it.
-- Name files to match the playbook step they support (e.g., `01-client-bypass-flow.png`).
+- Name files to match the playbook step they support (e.g., `02-client-bypass-flow.png`).
 
 ---
 
