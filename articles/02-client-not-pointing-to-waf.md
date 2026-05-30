@@ -32,7 +32,7 @@ Before reviewing logs, tuning rules, or investigating false positives, there is 
 
 If the answer is no, everything else is a distraction.
 
-![Diagram showing traffic bypassing the WAF](../diagrams/01-client-bypass-flow.png)
+![Diagram showing traffic bypassing the WAF](../diagrams/02-client-bypass-flow.png)
 
 ---
 

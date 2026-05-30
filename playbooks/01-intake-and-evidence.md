@@ -49,7 +49,7 @@ Be careful with statements like:
 - “Networking said everything is open”
 
 These may be true, but they need supporting evidence.
-
+For detailed guidance on authoritative sources for each type of evidence, see [Authoritative Sources for Troubleshooting Data](../guides/01-intake-and-evidence/authoritative-sources.md).
 ## Required participants
 
 Identify who needs to be involved based on the suspected layer.
@@ -67,6 +67,8 @@ Common participants include:
 | Application | Application owner or developer |
 | External integration | Third-party technical contact |
 
+For more detailed guidance on participants and their roles, see [Required Participants](../guides/01-intake-and-evidence/required-participants.md).
+
 ## Why this matters
 
 Troubleshooting WAF issues can quickly overwhelm junior staff because the investigation often crosses multiple layers and teams.
@@ -78,6 +80,8 @@ A structured intake process helps junior analysts:
 - Know who to engage
 - Escalate with useful context
 - Reduce unnecessary senior-engineer involvement
+
+For junior analyst guidance on triage, evidence collection, and escalation, see [Junior Triage Guidance](../guides/01-intake-and-evidence/junior-triage.md).
 
 ## Next step
 

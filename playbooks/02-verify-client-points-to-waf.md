@@ -4,7 +4,7 @@
 
 Confirm the client is resolving to the WAF, not bypassing it.
 
-![Diagram showing a WAF bypass](../diagrams/01-client-bypass-flow.png)
+![Diagram showing a WAF bypass](../diagrams/02-client-bypass-flow.png)
 
 ## Before Troubleshooting
 
@@ -55,4 +55,10 @@ Supporting evidence may include:
 
 ## How to verify
 
+For detailed DNS verification methods and commands, see [DNS Verification Guide](../guides/02-verify-client-points-to-waf/general.md).
+
+For platform-specific guidance:
+- [IBM WebSphere DNS Configuration](../guides/02-verify-client-points-to-waf/websphere.md)
+
+After verifying the client points to the WAF, proceed to:
 - [Step 03: Verify the request reaches the WAF](03-verify-request-reaches-waf.md).
